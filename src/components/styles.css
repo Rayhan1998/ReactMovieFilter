@@ -1,0 +1,17 @@
+/* Movie body */
+.movie-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.card {
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+}
+
+.image {
+  height: 200px;
+}
+/* end of movie body */

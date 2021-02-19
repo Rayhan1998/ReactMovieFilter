@@ -47,3 +47,13 @@ body {
   color: white;
 }
 /* End of Navbar */
+
+/* form */
+
+.form {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+/* end of form */
