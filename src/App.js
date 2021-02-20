@@ -5,9 +5,14 @@ import MovieBody from "./components/MovieBody";
 
 function App() {
   const [movies, setMovies] = useState([]);
-  console.log(movies);
+  const [watchlist, setWatchlist] = useState([]);
 
-  console.log(movies);
+  function addToWatchlist(movie) {
+    setWatchlist(watchlist => [...watchlist, movie]);
+  }
+
+  console.log(watchlist);
+  function removeFromWatchlist() {}
   return (
     <div className="App">
       <nav className="navbar">
@@ -30,7 +35,11 @@ function App() {
       </nav>
       <h1>Filter for Movies</h1>
       <Filter setMovies={setMovies} />
-      <MovieBody movies={movies} />
+      <MovieBody
+        movies={movies}
+        addToWatchlist={addToWatchlist}
+        watchlist={watchlist}
+      />
     </div>
   );
 }
