@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function MovieBoxes({ id, movie, addToWatchlist, watchlist }) {
+export default function MovieBoxes({
+  id,
+  movie,
+  addToWatchlist,
+  watchlist,
+  removeFromWatchlist
+}) {
   const imageTemplate = "https://image.tmdb.org/t/p/w300";
 
   function movieHandler() {
@@ -9,7 +15,12 @@ export default function MovieBoxes({ id, movie, addToWatchlist, watchlist }) {
       title: movie.original_title,
       image: movie.poster_path
     };
-    addToWatchlist(movieInfo);
+
+    if (watchlist.some(el => el.id == movie.id)) {
+      removeFromWatchlist(id);
+    } else {
+      addToWatchlist(movieInfo);
+    }
   }
 
   return (
@@ -29,7 +40,9 @@ export default function MovieBoxes({ id, movie, addToWatchlist, watchlist }) {
         more info
       </button>
       <button className="button is-primary  card-btn" onClick={movieHandler}>
-        add to watchlist
+        {watchlist.some(el => el.id == movie.id)
+          ? "remove from cart"
+          : "add to cart"}
       </button>
     </div>
   );

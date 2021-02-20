@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState } from "react";
 import Filter from "./components/Filter";
 import MovieBody from "./components/MovieBody";
+import WatchlistBody from "./components/WatchlistBody";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -11,8 +12,16 @@ function App() {
     setWatchlist(watchlist => [...watchlist, movie]);
   }
 
+  function removeFromWatchlist(id) {
+    let UpdatedWatchlist = watchlist.filter(movie => {
+      return movie.id != id;
+    });
+
+    setWatchlist(UpdatedWatchlist);
+  }
+
   console.log(watchlist);
-  function removeFromWatchlist() {}
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -38,8 +47,10 @@ function App() {
       <MovieBody
         movies={movies}
         addToWatchlist={addToWatchlist}
+        removeFromWatchlist={removeFromWatchlist}
         watchlist={watchlist}
       />
+      <WatchlistBody />
     </div>
   );
 }
