@@ -15,6 +15,8 @@ export default function MovieBody({
           <MovieBoxes
             key={movie.id}
             id={movie.id}
+            title={movie.original_title}
+            image={movie.poster_path}
             movie={movie}
             addToWatchlist={addToWatchlist}
             watchlist={watchlist}

@@ -3,8 +3,6 @@ import React from "react";
 export default function MovieBoxes({
   id,
   movie,
-  title,
-  image,
   addToWatchlist,
   watchlist,
   removeFromWatchlist
@@ -14,11 +12,11 @@ export default function MovieBoxes({
   function movieHandler() {
     const movieInfo = {
       id: id,
-      title: title,
-      image: image
+      title: movie.original_title,
+      image: movie.poster_path
     };
 
-    if (watchlist.some(el => el.id == id)) {
+    if (watchlist.some(el => el.id == movie.id)) {
       removeFromWatchlist(id);
     } else {
       addToWatchlist(movieInfo);
@@ -29,10 +27,12 @@ export default function MovieBoxes({
     <div className="card">
       <img
         className="image"
-        src={`${imageTemplate}${image}`}
+        src={`${imageTemplate}${movie.poster_path}`}
         alt="movie-image"
       />
-      <h1 style={{ paddingTop: "10px", textAlign: "center" }}>{title}</h1>
+      <h1 style={{ paddingTop: "10px", textAlign: "center" }}>
+        {movie.original_title}
+      </h1>
       <button
         className="button is-primary card-btn"
         onClick={() => console.log(id)}
@@ -40,7 +40,9 @@ export default function MovieBoxes({
         more info
       </button>
       <button className="button is-primary  card-btn" onClick={movieHandler}>
-        {watchlist.some(el => el.id == id) ? "remove from cart" : "add to cart"}
+        {watchlist.some(el => el.id == movie.id)
+          ? "remove from cart"
+          : "add to cart"}
       </button>
     </div>
   );

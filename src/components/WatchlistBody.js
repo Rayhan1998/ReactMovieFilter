@@ -2,13 +2,35 @@ import React, { useState } from "react";
 import MovieBoxes from "./MovieBoxes";
 import "../components/styles.css";
 
-export default function WatchlistBody({ watchlist }) {
-  const [isWatchlistOpen, setIsWatchlistOpen] = useState(true);
+export default function WatchlistBody({
+  movies,
+  addToWatchlist,
+  removeFromWatchlist,
+  watchlist
+}) {
+  console.log(watchlist);
+  const [isWatchlistOpen, setIsWatchlistOpen] = useState(false);
   return (
     <div className={isWatchlistOpen ? "watchlist-open" : "watchlist-closed"}>
-      <div className="inner-cards"></div>
+      <div
+        className={isWatchlistOpen ? "inner-cards-open" : "inner-cards-closed"}
+      >
+        {movies.map(movie => {
+          return (
+            <MovieBoxes
+              key={movie.id}
+              id={movie.id}
+              title={movie.title}
+              image={movie.image}
+              addToWatchlist={addToWatchlist}
+              watchlist={movies}
+              removeFromWatchlist={removeFromWatchlist}
+            />
+          );
+        })}
+      </div>
       <button
-        class="closeWatchlist button is-primary"
+        className="closeWatchlist button is-primary"
         onClick={() => setIsWatchlistOpen(!isWatchlistOpen)}
       >
         {isWatchlistOpen ? "close" : "open"}
@@ -16,18 +38,3 @@ export default function WatchlistBody({ watchlist }) {
     </div>
   );
 }
-
-// {
-//     movies.map(movie => {
-//         return (
-//             <MovieBoxes
-//             key={movie.id}
-//             id={movie.id}
-//             movie={movie}
-//             addToWatchlist={addToWatchlist}
-//             watchlist={watchlist}
-//             removeFromWatchlist={removeFromWatchlist}
-//             />
-//         );
-//     })
-// }

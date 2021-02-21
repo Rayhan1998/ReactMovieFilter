@@ -50,7 +50,12 @@ function App() {
         removeFromWatchlist={removeFromWatchlist}
         watchlist={watchlist}
       />
-      <WatchlistBody />
+      <WatchlistBody
+        movies={watchlist}
+        addToWatchlist={addToWatchlist}
+        removeFromWatchlist={removeFromWatchlist}
+        watchlist={watchlist}
+      />
     </div>
   );
 }

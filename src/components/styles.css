@@ -31,7 +31,7 @@
 /* watchlist-body */
 
 .watchlist-open {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   z-index: 1000;
   background-image: linear-gradient(
@@ -47,7 +47,7 @@
 }
 
 .watchlist-closed {
-  height: 0vh;
+  height: 0;
   width: 100vw;
   z-index: 1000;
   background-image: linear-gradient(
@@ -61,10 +61,13 @@
   left: 0;
   transition: 0.5s;
 }
-.inner-cards {
+.inner-cards-open {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
+.inner-cards-closed {
+  display: none;
+}
 /* end of watchlist */
