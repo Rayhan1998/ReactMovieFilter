@@ -6,7 +6,8 @@ export default function MovieBody({
   movies,
   addToWatchlist,
   watchlist,
-  removeFromWatchlist
+  removeFromWatchlist,
+  saveMovies
 }) {
   return (
     <div className="movie-body">
@@ -21,6 +22,7 @@ export default function MovieBody({
             addToWatchlist={addToWatchlist}
             watchlist={watchlist}
             removeFromWatchlist={removeFromWatchlist}
+            saveMovies={saveMovies}
           />
         );
       })}

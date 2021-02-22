@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Filter from "./components/Filter";
 import MovieBody from "./components/MovieBody";
 import WatchlistBody from "./components/WatchlistBody";
@@ -10,6 +10,7 @@ function App() {
 
   function addToWatchlist(movie) {
     setWatchlist(watchlist => [...watchlist, movie]);
+    saveMovies(watchlist);
   }
 
   function removeFromWatchlist(id) {
@@ -18,9 +19,25 @@ function App() {
     });
 
     setWatchlist(UpdatedWatchlist);
+    saveMovies(watchlist);
   }
 
-  console.log(watchlist);
+  function saveMovies(watchlist) {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }
+
+  function UpdateWatchlistFromStorage() {
+    setWatchlist(JSON.parse(localStorage.getItem("watchlist")));
+  }
+
+  useEffect(() => {
+    if (localStorage.getItem("watchlist") === null) {
+      saveMovies(watchlist);
+      UpdateWatchlistFromStorage();
+    } else {
+      UpdateWatchlistFromStorage();
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -49,12 +66,14 @@ function App() {
         addToWatchlist={addToWatchlist}
         removeFromWatchlist={removeFromWatchlist}
         watchlist={watchlist}
+        saveMovies={saveMovies}
       />
       <WatchlistBody
         movies={watchlist}
         addToWatchlist={addToWatchlist}
         removeFromWatchlist={removeFromWatchlist}
         watchlist={watchlist}
+        saveMovies={saveMovies}
       />
     </div>
   );

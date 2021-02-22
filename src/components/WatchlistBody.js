@@ -6,7 +6,8 @@ export default function WatchlistBody({
   movies,
   addToWatchlist,
   removeFromWatchlist,
-  watchlist
+  watchlist,
+  saveMovies
 }) {
   console.log(watchlist);
   const [isWatchlistOpen, setIsWatchlistOpen] = useState(false);
@@ -25,6 +26,7 @@ export default function WatchlistBody({
               addToWatchlist={addToWatchlist}
               watchlist={movies}
               removeFromWatchlist={removeFromWatchlist}
+              saveMovies={saveMovies}
             />
           );
         })}

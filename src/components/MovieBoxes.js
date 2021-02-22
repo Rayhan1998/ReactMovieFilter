@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function MovieBoxes({
   id,
@@ -7,7 +7,8 @@ export default function MovieBoxes({
   image,
   addToWatchlist,
   watchlist,
-  removeFromWatchlist
+  removeFromWatchlist,
+  saveMovies
 }) {
   const imageTemplate = "https://image.tmdb.org/t/p/w300";
 
@@ -24,6 +25,10 @@ export default function MovieBoxes({
       addToWatchlist(movieInfo);
     }
   }
+
+  useEffect(() => {
+    saveMovies(watchlist);
+  }, [watchlist]);
 
   return (
     <div className="card">
