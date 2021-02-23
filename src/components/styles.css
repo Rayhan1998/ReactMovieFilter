@@ -71,3 +71,27 @@
   display: none;
 }
 /* end of watchlist */
+
+/* Modal */
+.popup-Modal {
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.cardContent {
+  height: 500px;
+  background-color: #00e7eb;
+  width: 500px;
+}
+
+.show {
+  display: block;
+}
+
+.close {
+  display: none;
+}
+/* end of Modal */

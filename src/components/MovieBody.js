@@ -1,5 +1,6 @@
 import React from "react";
 import MovieBoxes from "./MovieBoxes";
+
 import "../components/styles.css";
 
 export default function MovieBody({

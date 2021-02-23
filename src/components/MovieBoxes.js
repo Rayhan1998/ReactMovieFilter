@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import Modal from "./Modal";
 
 export default function MovieBoxes({
   id,
@@ -11,6 +12,7 @@ export default function MovieBoxes({
   saveMovies
 }) {
   const imageTemplate = "https://image.tmdb.org/t/p/w300";
+  const [isMoreInfoCLicked, setIsMoreInfoCLicke] = useState(false);
 
   function movieHandler() {
     const movieInfo = {
@@ -40,7 +42,7 @@ export default function MovieBoxes({
       <h1 style={{ paddingTop: "10px", textAlign: "center" }}>{title}</h1>
       <button
         className="button is-primary card-btn"
-        onClick={() => console.log(id)}
+        onClick={() => <h1>Hello</h1>}
       >
         more info
       </button>
